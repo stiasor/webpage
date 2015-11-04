@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-
+# TODO - Legg til  og indenter etsteds...
 {% block customScripts %}
 	
 	{# Easy routing with FOSJsRouting bundle #}
@@ -102,13 +102,14 @@
 							<tr>
 								<td width="70%"> {{ p.name }} </a> </td>
 								
-								{# Only SUPER_ADMIN should be able to edit teams #}
+								{# Only SUPER_ADMIN should be able to edit teams, and only HIGHEST_ADMIN may delete posiitons #}
 								{% if is_granted('ROLE_SUPER_ADMIN') %} 
 		
 										<td><a href="{{ path('teamadmin_edit_position', { 'id': p.id }) }}" class="button tiny" >Rediger</a></td>
 				
-										<td><a href="#" id={{p.id}} class="button tiny alert delete"><i class="fa fa-trash-o"></i> Slett</a></td>
-										
+										{% if is_granted('ROLE_HIGHEST_ADMIN') %}
+												<td><a href="#" id={{p.id}} class="button tiny alert delete"><i class="fa fa-trash-o"></i> Slett</a></td>
+										{% endif %}
 								{% endif %}
 								
 							</tr>
