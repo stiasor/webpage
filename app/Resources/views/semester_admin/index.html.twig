@@ -131,7 +131,7 @@
 								<td> {{ s.admissionStartDate|date('Y-m-d') }} </br> Kl.   {{ s.admissionStartDate|date('H:i:s') }}</td>
 								<td> {{ s.admissionEndDate|date('Y-m-d') }}  </br> Kl.   {{ s.admissionEndDate|date('H:i:s') }}</td>
 								
-								{% if is_granted('ROLE_SUPER_ADMIN') %} 
+								{% if is_granted('ROLE_HIGHEST_ADMIN') %} 
 								
 									<td><a href="#" id="{{ s.id }}" class="button tiny alert delete"><i class="fa fa-trash-o"></i> Slett</a></td>
 									
